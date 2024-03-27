@@ -5,8 +5,10 @@ import java.util.Scanner;
 public class Gestion {
     private ArrayList<Documento> documentos;
 
+
     public Gestion(ArrayList<Documento> documentos) {
         this.documentos = documentos;
+
     }
 
     public void agregar() {
@@ -19,38 +21,21 @@ public class Gestion {
         int año = sc.nextInt();
 
         System.out.println("Ingrese el tipo de documento");
-        System.out.println("1. LIBRO 2. REVISTA 3. ARTICULO 4. PAPER");
-        int opcion = sc.nextInt();
+        System.out.println("LIBRO, REVISTA, ARTICULO, PAPER");
+        String tipo = sc.nextLine();
 
-        Tipo tipo = null;
-        switch (opcion) {
-            case 1:
-                tipo = Tipo.LIBRO;
-                break;
-            case 2:
-                tipo = Tipo.REVISTA;
-                break;
-            case 3:
-                tipo = Tipo.ARTICULO;
-                break;
-            case 4:
-                tipo = Tipo.PAPER;
-                break;
-            default:
-                break;
-        }
-
+    
         System.out.println("Ingrese el nombre del autor");
         String nombre = sc.nextLine();
 
-        System.out.println("Ingrese el apellido del autor");
-        String apellido = sc.nextLine();
+        System.out.println("Ingrese el id del autor");
+        int id = sc.nextInt();
 
-        Autor autor = new Autor(nombre, apellido);
+        Autor autor = new Autor(nombre, id);
         ArrayList<Autor> autores = new ArrayList<Autor>();
         autores.add(autor);
 
-        Documento documento = new Documento(titulo, año, autores, tipo);
+        Documento documento = new Documento(titulo, año, tipo, id);
         String palabra = "";
 
         do {
@@ -83,35 +68,18 @@ public class Gestion {
                     documento.setAnoDePublicacion(nuevoAño);
 
                     System.out.println("Ingrese el nuevo tipo de documento");
-                    System.out.println("1. LIBRO 2. REVISTA 3. ARTICULO 4. PAPER");
+                    System.out.println("LIBRO, REVISTA, ARTICULO, PAPER");
 
                     int opcion = userInput.nextInt();
-                    Tipo tipo = null;
-
-                    switch (opcion) {
-                        case 1:
-                            tipo = Tipo.LIBRO;
-                            break;
-                        case 2:
-                            tipo = Tipo.REVISTA;
-                            break;
-                        case 3:
-                            tipo = Tipo.ARTICULO;
-                            break;
-                        case 4:
-                            tipo = Tipo.PAPER;
-                            break;
-                        default:
-                            break;
-                    }
+                    String tipo = null;
 
                     documento.setTipo(tipo);
                     System.out.println("Ingrese el nombre del autor");
                     String nombre = userInput.nextLine();
 
-                    System.out.println("Ingrese el apellido del autor");
-                    String apellido = userInput.nextLine();
-                    Autor autor = new Autor(nombre, apellido);
+                    System.out.println("Ingrese el id del autor");
+                    int id = userInput.nextInt();
+                    Autor autor = new Autor(nombre, id);
 
                     ArrayList<Autor> autores = new ArrayList<Autor>();
                     autores.add(autor);
@@ -146,7 +114,7 @@ public class Gestion {
                     System.out.println("Año de publicacion: " + documento.getAnoDePublicacion());
                     System.out.println("Autores: ");
                     for (Autor autor : documento.getAutores()) {
-                        System.out.println(autor.getNombre() + " " + autor.getApellido());
+                        System.out.println(autor.getNombre() + " " + autor.getId());
                     }
                     System.out.println("Tipo: " + documento.getTipo());
                     System.out.println("Palabras clave: ");
@@ -187,7 +155,7 @@ public class Gestion {
             System.out.println("Año de publicacion: " + documento.getAnoDePublicacion());
             System.out.println("Autores: ");
             for (Autor autor : documento.getAutores()) {
-                System.out.println(autor.getNombre() + " " + autor.getApellido());
+                System.out.println(autor.getNombre() + " " + autor.getId());
             }
             System.out.println("Tipo: " + documento.getTipo());
             System.out.println("Palabras clave: ");

@@ -4,20 +4,28 @@ import java.util.ArrayList;
 public  class Documento {
     private String titulo;
     private int añoDePublicacion;
-    private ArrayList<Autor> autores;
-    private Tipo tipo;
+    private String tipo;
     private ArrayList<String> palabrasClave;
+    private int id;
 
-    public Documento(String titulo, int anoDePublicacion, ArrayList<Autor> autores, Tipo tipo ) {
+    public Documento(String titulo, int anoDePublicacion,  String tipo, int id ) {
         this.titulo = titulo;
         this.añoDePublicacion = anoDePublicacion;
-        this.autores = autores;
         this.tipo = tipo;
         this.palabrasClave = new ArrayList<String>();
+        this.id=id;
     }
 
     public String getTitulo() {
         return titulo;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public void setTitulo(String titulo) {
@@ -32,22 +40,6 @@ public  class Documento {
         this.añoDePublicacion = anoDePublicacion;
     }
 
-    public ArrayList<Autor> getAutores() {
-        return autores;
-    }
-
-    public void setAutores(ArrayList<Autor> autores) {
-        this.autores = autores;
-    }
-
-    public Tipo getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(Tipo tipo) {
-        this.tipo = tipo;
-    }
-
     public ArrayList<String> getPalabrasClave() {
         return palabrasClave;
     }
@@ -56,20 +48,20 @@ public  class Documento {
         this.palabrasClave = palabrasClave;
     }
 
-    public void añadirAutor(Autor autor){
-        this.autores.add(autor);
-    }
-
     public  void añadirPalabraClave(String palabraClave){
         this.palabrasClave.add(palabraClave);
-    }
-
-    public void eliminarAutor(Autor autor){
-        this.autores.remove(autor);
     }
 
     public void eliminarPalabraClave(String palabraClave){
         this.palabrasClave.remove(palabraClave);
     }
+
+    @Override
+    public String toString() {
+        return "Documento [titulo= " + titulo + ", añoDePublicacion= " + añoDePublicacion + ", tipo= " + tipo
+                + ", palabrasClave= " + palabrasClave + ", id= " + id + "]";
+    }
+
+    
 
 }

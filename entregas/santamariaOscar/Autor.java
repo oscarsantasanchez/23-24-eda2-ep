@@ -1,7 +1,7 @@
 
 public class Autor {
     private String nombre;
-    private String apellido;
+    private int id;
 
     public String getNombre() {
         return nombre;
@@ -11,17 +11,23 @@ public class Autor {
         this.nombre = nombre;
     }
 
-    public String getApellido() {
-        return apellido;
+    public int getId() {
+        return id;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public Autor(String nombre, String apellido) {
+    public Autor(String nombre, int id) {
         this.nombre = nombre;
-        this.apellido = apellido;
+        this.id=id;
     }
+
+    @Override
+    public String toString() {
+        return "Autor [nombre= " + nombre + ", id= " + id + " ]";
+    }
+
 
 }
