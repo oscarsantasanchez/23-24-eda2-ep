@@ -67,7 +67,7 @@ public  class Documento {
     @Override
     public String toString() {
         return "Documento [titulo= " + titulo + ", añoDePublicacion= " + añoDePublicacion + ", tipo= " + tipo
-                + ", palabrasClave= " + palabrasClave + ", id= " + id + "]";
+                 + ", id= " + id + "]";
     }
 
     

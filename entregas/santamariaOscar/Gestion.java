@@ -43,21 +43,10 @@ public class Gestion {
     }
 
     private void agregarDocumento(Documento documento) {
-        listarAutor();
-        System.out.println("Ingrese el id del autor");
-        int id=scanner.nextInt();
-
-        if (buscarAutorPorID(id)== null) {
-            id=agregarAutor(documento);
-        }
-
-        agregarRelacion(documento.getId(), id);;
-
-
         documentos.add(documento);
     }
 
-    private int agregarAutor(Documento documento) {
+    private void agregarAutor(Documento documento) {
         System.out.println("Ingrese el nombre del autor");
         String nombre = scanner.nextLine();
 
@@ -66,19 +55,25 @@ public class Gestion {
         scanner.nextLine();
 
         Autor autor = new Autor(nombre, id);
-        agregarAutor(autor);
-        return id;
+        autores.add(autor);
 
     }
 
     private void agregarAutor(Autor autor) {
         autores.add(autor);
-    
     }
 
     private void agregarRelacion(int bookID, int authorID) {
         DocumentoAutor documentoAutor = new DocumentoAutor(bookID, authorID);
         documentoAutores.add(documentoAutor);
+
+        Documento documento = buscarDocumentoPorID(bookID);
+        if (documento != null) {
+            Autor autor= buscarAutorPorID(authorID);
+            if (autor != null) {
+                agregarAutor(autor);
+            }
+        }
     }
 
     private List<Autor> autoresPorBookID(int bookID) {
@@ -87,11 +82,9 @@ public class Gestion {
         for (int i = 0; i < documentoAutores.size(); i++) {
             DocumentoAutor documentoAutor = documentoAutores.get(i);
             if (documentoAutor.getDocumentoId() == bookID) {
-                for (int j = 0; j < autores.size(); j++) {
-                    Autor autor = autores.get(j);
-                    if (autor.getId() == documentoAutor.getAuthorId()) {
-                        autores.add(autor);
-                    }
+                Autor autor= buscarAutorPorID(documentoAutor.getAuthorId());
+                if (autor != null) {
+                    autores.add(autor);
                 }
             }
         }
@@ -105,11 +98,9 @@ public class Gestion {
         for (int i = 0; i < documentoAutores.size(); i++) {
             DocumentoAutor documentoAutor = documentoAutores.get(i);
             if (documentoAutor.getAuthorId() == autorID) {
-                for (int j = 0; j < documentos.size(); j++) {
-                    Documento documento = documentos.get(j);
-                    if (documento.getId() == documentoAutor.getDocumentoId()) {
-                        documentos.add(documento);
-                    }
+                Documento libro= buscarDocumentoPorID(documentoAutor.getDocumentoId());
+                if (libro != null) {
+                    documentos.add(libro);
                 }
             }
         }
@@ -151,6 +142,7 @@ public class Gestion {
         Scanner scanner = new Scanner(System.in);
 
         do {
+            System.out.println();
             System.out.println("Bienvenido a la gestion de documentos, seleccione la opción que quieras ejecutar:");
             System.out.println("1. Agregar Documento");
             System.out.println("2. Listar Documentos");
@@ -160,6 +152,8 @@ public class Gestion {
             System.out.println("6. Listar Autores por Documento");
             System.out.println("7. Listar Documentos por Autor");
             System.out.println("8. Salir");
+            System.out.println();
+
             opcion = scanner.nextInt();
 
             switch (opcion) {
