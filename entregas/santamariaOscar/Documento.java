@@ -56,6 +56,14 @@ public  class Documento {
         this.palabrasClave.remove(palabraClave);
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "Documento [titulo= " + titulo + ", añoDePublicacion= " + añoDePublicacion + ", tipo= " + tipo
