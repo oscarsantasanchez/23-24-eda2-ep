@@ -26,7 +26,7 @@ public class Autor {
 
     @Override
     public String toString() {
-        return "Autor [nombre= " + nombre + ", id= " + id + " ]";
+        return "Autor [Nombre: " + nombre + ", ID: " + id + " ]";
     }
 
 

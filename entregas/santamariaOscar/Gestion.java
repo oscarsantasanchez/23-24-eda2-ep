@@ -55,7 +55,7 @@ public class Gestion {
         scanner.nextLine();
 
         Autor autor = new Autor(nombre, id);
-        autores.add(autor);
+       agregarAutor(autor);
 
     }
 
@@ -78,7 +78,7 @@ public class Gestion {
 
     private List<Autor> autoresPorBookID(int bookID) {
         List<Autor> autores = new ArrayList<Autor>();
-
+        
         for (int i = 0; i < documentoAutores.size(); i++) {
             DocumentoAutor documentoAutor = documentoAutores.get(i);
             if (documentoAutor.getDocumentoId() == bookID) {
@@ -208,6 +208,8 @@ public class Gestion {
             }
 
         } while (opcion != 8);
+
+        scanner.close();
 
     }
 
