@@ -63,6 +63,12 @@ public class Gestion {
         autores.add(autor);
     }
 
+	private void listarAutor() {
+        for (int i = 0; i < autores.size(); i++) {
+            System.out.println(autores.get(i));
+        }
+    }
+
     private void agregarRelacion(int bookID, int authorID) {
         DocumentoAutor documentoAutor = new DocumentoAutor(bookID, authorID);
         documentoAutores.add(documentoAutor);
@@ -130,11 +136,6 @@ public class Gestion {
         return null;
     }
 
-    private void listarAutor() {
-        for (int i = 0; i < autores.size(); i++) {
-            System.out.println(autores.get(i));
-        }
-    }
 
     public void menu() {
 
