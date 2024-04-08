@@ -36,8 +36,6 @@ public  class Documento {
         this.añoDePublicacion = anoDePublicacion;
     }
 
- 
-
     public int getId() {
         return id;
     }
@@ -51,7 +49,5 @@ public  class Documento {
         return "Documento [Titulo: " + titulo + ", AñoDePublicacion: " + añoDePublicacion + ", Tipo: " + tipo
                  + ", ID: " + id + "]";
     }
-
-    
 
 }
