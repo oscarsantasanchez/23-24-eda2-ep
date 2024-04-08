@@ -21,6 +21,7 @@ public class Gestion {
             System.out.println(documentos.get(i));
         }
     }
+    //este comentario es porque me pone que para hacer el pull request no hay nada que comparar
 
     private void agregarDocumento() {
 
